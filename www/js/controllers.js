@@ -54,6 +54,7 @@ function ChatsCtrl($scope) {
 function ChatCtrl($scope, $stateParams) {
     $scope.init = function () {
         $scope.message={};
+        $scope.message.id = 1;
         PUBNUB_demo.subscribe({
             channel: 'company_chat_group',
             message: function(m){console.log(m)}
