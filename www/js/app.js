@@ -6,66 +6,75 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('pubnub', ['ionic', 'pubnub.controllers'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
-  .state('app', {
-    url: "/app",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
-  })
-
-  .state('app.search', {
-    url: "/search",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/search.html"
-      }
-    }
-  })
-
-  .state('app.contacts', {
-    url: "/contacts",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/contacts.html"
-      }
-    }
-  })
-    .state('app.group.chat', {
-      url: "/group/chat",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/chat.html",
-          controller: 'ChatCtrl'
-        }
-      }
+    .run(function($ionicPlatform) {
+        $ionicPlatform.ready(function() {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
+        });
     })
 
-  .state('app.single', {
-    url: "/chat/:id",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/chat.html",
-        controller: 'ChatCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/chat');
-});
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+
+            .state('app', {
+                url: "/app",
+                abstract: true,
+                templateUrl: "templates/menu.html",
+                controller: 'AppCtrl'
+            })
+
+            .state('app.search', {
+                url: "/search",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/search.html"
+                    }
+                }
+            })
+
+            .state('app.contacts', {
+                url: "/contacts",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/contacts.html"
+                    }
+                }
+            })
+            .state('app.chat.history', {
+                url: "/chats",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/chats.html",
+                        controller: 'ChatsCtrl'
+                    }
+                }
+            })
+            .state('app.group.chat', {
+                url: "/group/chat",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/chat.html",
+                        controller: 'ChatCtrl'
+                    }
+                }
+            })
+
+            .state('app.single', {
+                url: "/chat/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/chat.html",
+                        controller: 'ChatCtrl'
+                    }
+                }
+            });
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/app/chat');
+    });
