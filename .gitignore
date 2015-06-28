@@ -1,0 +1,12 @@
+*.pyc
+.idea
+venv/
+.DS_Store
+*.log
+.bowerrc
+bower.json
+gulpfile.js
+hooks/
+plugins/
+platforms/
+node_modules/
