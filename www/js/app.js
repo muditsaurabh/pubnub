@@ -1,3 +1,4 @@
+'use strict';
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -47,7 +48,7 @@ angular.module('pubnub', ['ionic', 'pubnub.controllers'])
                     }
                 }
             })
-            .state('app.chat.history', {
+            .state('app.chatHistory', {
                 url: "/chats",
                 views: {
                     'menuContent': {
@@ -56,7 +57,7 @@ angular.module('pubnub', ['ionic', 'pubnub.controllers'])
                     }
                 }
             })
-            .state('app.group.chat', {
+            .state('app.groupChat', {
                 url: "/group/chat",
                 views: {
                     'menuContent': {
@@ -76,5 +77,5 @@ angular.module('pubnub', ['ionic', 'pubnub.controllers'])
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/chat');
+        $urlRouterProvider.otherwise('/app/group/chat');
     });
