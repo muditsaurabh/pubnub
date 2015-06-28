@@ -100,17 +100,22 @@ function ChatsCtrl($scope) {
 }
 
 function ChatCtrl($scope, $stateParams) {
+
     $scope.init = function () {
         $scope.message={};
         $scope.message.id = 1;
-        PUBNUB_demo.subscribe({
+        $scope.PUBNUB_demo = PUBNUB.init({
+            publish_key: 'pub-c-d1916d4b-1730-4d04-ace9-2ae2b73f603a',
+            subscribe_key: 'sub-c-d662992c-185c-11e5-904b-0619f8945a4f'
+        });
+        $scope.PUBNUB_demo.subscribe({
             channel: 'company_chat_group',
             message: function(m){console.log(m)}
         });
     };
 
     $scope.publishToCompanyGroup = function () {
-        PUBNUB_demo.publish({
+        $scope.PUBNUB_demo.publish({
             channel: 'company_chat_group',
             message: {"message": $scope.message.text}
         });
